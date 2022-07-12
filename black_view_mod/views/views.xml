@@ -1,0 +1,24 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+
+    <record id="inherit_view_id_inherit_module_name" model="ir.ui.view">
+      <field name="name">model.name.view.form.inherit</field>
+      <field name="model">model.name</field>
+      <field name="inherit_id" ref="mrp_workorder_view_form_tablet"/>
+      <field name="arch" type="xml">
+        <xpath expr="//field[@name='lot_id']" position = "before">
+          <field name="paquete_fuente"/>
+		    </xpath>
+        <!--field name="finished_lot_id" position="attributes">
+          <attribute name="domain">('product_id', '=', product_id),('qty_done', '=>', 0)</attribute>
+        </field-->
+      </field>
+    </record>
+
+
+
+   
+  </data>
+</odoo>
