@@ -3,7 +3,7 @@
 from odoo import models, fields, api
 
 
-class test_module(models.Model):
+class MrpWorkorder(models.Model):
     _inherit = 'mrp.workorder'
     #_description = 'test_module.test_module'
 

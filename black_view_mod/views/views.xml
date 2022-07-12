@@ -3,9 +3,9 @@
     <!-- explicit list view definition -->
 
 
-    <record id="inherit_view_id_inherit_module_name" model="ir.ui.view">
+    <record id="inherit_view_id_inherit_work_name" model="ir.ui.view">
       <field name="name">model.name.view.form.inherit</field>
-      <field name="model">model.name</field>
+      <field name="model">mrp.workorder</field>
       <field name="inherit_id" ref="mrp_workorder_view_form_tablet"/>
       <field name="arch" type="xml">
         <xpath expr="//field[@name='lot_id']" position = "before">
