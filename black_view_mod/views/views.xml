@@ -6,11 +6,18 @@
     <record id="inherit_view_id_inherit_work_name" model="ir.ui.view">
       <field name="name">model.name.view.form.inherit</field>
       <field name="model">mrp.workorder</field>
-      <field name="inherit_id" ref="mrp_workorder_view_form_tablet"/>
+      <field name="inherit_id" ref="mrp_workorder.mrp_workorder_view_form_tablet"/>
       <field name="arch" type="xml">
         <xpath expr="//field[@name='lot_id']" position = "before">
           <field name="paquete_fuente"/>
 		    </xpath>
+        <xpath expr="//div[hasclass('o_workorder_field')]" position="inside"> 
+          <label for="paquete_fuente" string="Paquete Fuente"/>
+          <field name="--  paquete_fuente" string="Paquete Fuente" class="text-center o_lot_number" context="{'default_product_id': component_id, 'default_company_id': company_id, 'active_mo_id': test_type == 'register_consumed_materials' and production_id or False}" attrs="{'invisible': [('component_tracking', '=', 'none')]}" domain="[('product_id', '=', component_id), '|', ('company_id', '=', False), ('company_id', '=', company_id)]"/>
+          
+        </xpath>
+
+
         <!--field name="finished_lot_id" position="attributes">
           <attribute name="domain">('product_id', '=', product_id),('qty_done', '=>', 0)</attribute>
         </field-->
