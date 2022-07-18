@@ -7,7 +7,7 @@ class MrpProductionWorkcenterLine(models.Model):
     _inherit = 'mrp.workorder'
     #_description = 'test_module.test_module'
 
-    paquete_fuente = fields.Many2one('stock.production.lot')
+    paquete_fuente = fields.Many2one('paquete.fuente.order')
     #value = fields.Integer()
     #value2 = fields.Float(compute="_value_pc", store=True)
     #description = fields.Text()
