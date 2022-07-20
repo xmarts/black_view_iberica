@@ -11,7 +11,7 @@ class PaqueteFuente(models.Model):
     _description = 'Paquete fuente'
 
     name = fields.Integer()
-    paquete_fuente = fields.Integer()
+    paquete_fuente = fields.Many2one('stock.quant.package')
     producto = fields.Many2one('product.product')
     quantity = fields.Integer()
     lot= fields.Integer()

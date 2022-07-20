@@ -9,12 +9,13 @@
       <field name="inherit_id" ref="mrp_workorder.mrp_workorder_view_form_tablet"/>
       <field name="arch" type="xml">
         <xpath expr="//field[@name='lot_id']" position = "before">
-          <field name="paquete_fuente"/>
+          <field name="package_id" groups="stock.group_tracking_lot"/>
+          <field name="location_id" invisible="1"/>
 		    </xpath>
         <xpath expr="//div[hasclass('o_workorder_field')]" position="inside"> 
-          <label for="paquete_fuente" string="--  Paquete Fuente"/>
-          <field name="paquete_fuente" string="Paquete Fuente" class="text-center o_lot_number" />
-          
+          <label for="package_id" string="--  Paquete Fuente"/>
+          <field name="package_id" string="Paquete Fuente" class="text-center o_lot_number" groups="stock.group_tracking_lot"  domain="[('location_id', '=', location_id)]"/>
+          <field name="location_id" invisible="1"/>
         </xpath>
 
 
