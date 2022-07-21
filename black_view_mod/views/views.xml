@@ -14,7 +14,7 @@
 		    </xpath>
         <xpath expr="//div[hasclass('o_workorder_field')]" position="inside"> 
           <label for="package_id" string="--  Paquete Fuente"/>
-          <field name="package_id" string="Paquete Fuente" class="text-center o_lot_number" groups="stock.group_tracking_lot"  domain="[('location_id', '=', location_id)]"/>
+          <field name="package_id" string="Paquete Fuente" class="text-center o_lot_number" groups="stock.group_tracking_lot"  domain="[('location_id', '=', location_id), ('quant_ids.product_id', '=', component_id)]"/>
           <field name="location_id" invisible="1"/>
         </xpath>
 
