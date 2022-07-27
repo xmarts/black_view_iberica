@@ -14,3 +14,4 @@ class MrpBom(models.Model):
     _inherit = "mrp.bom"
 
     mrp_bom_line_extra_ids = fields.One2many("mrp.bom.line", "bom_id")
+    product_extra_id = fields.Many2one("product.product")
