@@ -9,11 +9,8 @@ class MrpProductionWorkcenterLine(models.Model):
 
     package_id = fields.Many2one(related='move_id.move_line_ids.package_id', readonly=False)
     location_id = fields.Many2one(related='move_id.move_line_ids.location_id', readonly=False)
-    #value = fields.Integer()
-    #value2 = fields.Float(compute="_value_pc", store=True)
-    #description = fields.Text()
 
-    #@api.depends('value')
-    #def _value_pc(self):
-    # for record in self:
-    #     record.value2 = float(record.value) / 100
+class MrpBom(models.Model):
+    _inherit = "mrp.bom"
+
+    mrp_bom_line_extra_ids = fields.One2many("mrp.bom.line")

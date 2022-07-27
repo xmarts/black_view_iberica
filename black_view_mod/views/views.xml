@@ -25,6 +25,22 @@
       </field>
     </record>
 
+    <record id="inherit_view_id_inherit_mrp_mob_extra" model="ir.ui.view">
+      <field name="name">mrp.mob.extra.view.form.inherit</field>
+      <field name="model">mrp.mob</field>
+      <field name="inherit_id" ref="mrp.mrp_bom_form_view"/>
+      <field name="arch" type="xml">
+         <xpath expr="//notebook/page[@name='miscellaneous']">
+          <field name="mrp_bom_line_extra_ids">
+            <tree string="Componentes Extras" editable="top">
+              <field name="product_id" context="{'default_detailed_type': 'product'}"/>
+            </tree>
+          </field>
+        </xpath>
+         
+      </field>
+    </record>
+
 
 
    
