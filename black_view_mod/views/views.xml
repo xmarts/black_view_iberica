@@ -18,10 +18,6 @@
           <field name="location_id" invisible="1"/>
         </xpath>
 
-
-        <!--field name="finished_lot_id" position="attributes">
-          <attribute name="domain">('product_id', '=', product_id),('qty_done', '=>', 0)</attribute>
-        </field-->
       </field>
     </record>
 
@@ -30,7 +26,7 @@
       <field name="model">mrp.bom</field>
       <field name="inherit_id" ref="mrp.mrp_bom_form_view"/>
       <field name="arch" type="xml">
-         <xpath expr="//notebook/page[@name='miscellaneous']">
+         <xpath expr="//notebook/page[@name='miscellaneous']" position="after">
            <page string="Componentes extras" name="extra_componentes">
             <field name="mrp_bom_line_extra_ids">
               <tree string="Componentes Extras" editable="top">
