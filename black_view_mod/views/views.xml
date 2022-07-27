@@ -33,8 +33,8 @@
          <xpath expr="//notebook/page[@name='miscellaneous']">
           <field name="mrp_bom_line_extra_ids">
             <tree string="Componentes Extras" editable="top">
-              <field name="product_id" context="{'default_detailed_type': 'product'}"/>
-              <field name="company_id" domain="[('company_id', 'in', [company_id, False])]" invisible="1"/>
+              <field name="product_id" context="{'default_detailed_type': 'product'}" domain="[('company_id', 'in', [company_id, False])]"/>
+              <field name="company_id" invisible="1"/>
             </tree>
           </field>
         </xpath>
