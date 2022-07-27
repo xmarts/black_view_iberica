@@ -13,9 +13,9 @@ class MrpProductionWorkcenterLine(models.Model):
 class MrpBom(models.Model):
     _inherit = "mrp.bom"
 
-    mrp_bom_line_extra_ids = fields.One2many("mrp.bom.line", "bom_id")
+    mrp_bom_line_extra_ids = fields.One2many("mrp.bom.line")
 
 class MrpBomLine(models.Model):
     _inherit = "mrp.bom.line"
 
-    product_extra_id = fields.Many2one("product.product")
+    product_extra_id = fields.Many2one("product.product", string="Componentes extras")
