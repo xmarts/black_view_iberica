@@ -21,5 +21,6 @@ class MrpBomLine(models.Model):
     product_extra_id = fields.Many2one("product.product", string="Componentes extras")
 
 class ProductProduct(models.Model):
+    _inherit = "product.product"
 
     check_bool = fields.Boolean(default=False, readonly=False, required=False)
