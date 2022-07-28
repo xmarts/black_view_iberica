@@ -20,6 +20,12 @@ class MrpBomLine(models.Model):
 
     product_extra_id = fields.Many2one("product.product", string="Componentes extras")
 
+    @api.depends('product_extra_id')
+    def _enviar_bool(self):
+       for r in self:
+           if r.product_extra_id:
+               r.product_extra_id.check_bool = True
+
 class ProductProduct(models.Model):
     _inherit = "product.product"
 
