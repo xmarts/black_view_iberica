@@ -13,13 +13,11 @@ class MrpProductionWorkcenterLine(models.Model):
 
     @api.onchange('lot_id')
     def _update_component_quantity_lot(self):
-        res = super()._update_component_quantity_lot()
         for wo in self:
             if wo.lot_id:
                 if wo.qty_done == 0:
                     wo.qty_done = 1
                     wo._update_component_quantity()
-        return res
 
 class MrpBom(models.Model):
     _inherit = "mrp.bom"
