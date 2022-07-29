@@ -19,8 +19,8 @@ class MrpProductionWorkcenterLine(models.Model):
                 if wo.qty_done==0:
                     wo.qty_done = 1
                     if wo.qty_done==1:
-                        wo.component_remaining_qty = 1
-                        if wo.component_remaining_qty==1:
+                        wo.component_remaining_qty = 2
+                        if wo.component_remaining_qty==2:
                             wo._next(continue_production=True)
 
 class MrpBom(models.Model):
@@ -40,22 +40,19 @@ class MrpBomLine(models.Model):
       #     if r.product_extra_id:
        #        r.product_extra_id.check_bool = True ('name', '=', compo_rel)
 
-#class MrpWorkorderAdditionalProduct(models.TransientModel):
- #   _inherit = "mrp_workorder.additional.product"
+class MrpWorkorderAdditionalProduct(models.TransientModel):
+    _inherit = "mrp_workorder.additional.product"
 
 
-  #  test_type = fields.Char(related='test_type_id.technical_name')
-   # test_type_id = fields.Many2one('quality.point.test_type', 'Test Type', related='workorder_id.test_type_id')
-    #compo_rel = fields.One2many(related='workorder_id.production_id.bom_id.mrp_bom_line_extra_ids', readonly=False, default=lambda self: self.env.context.get('active_id', None))
+    test_type = fields.Char(related='test_type_id.technical_name')
+    test_type_id = fields.Many2one('quality.point.test_type', 'Test Type', related='workorder_id.test_type_id')
+    compo_rel = fields.One2many(related='workorder_id.production_id.bom_id.mrp_bom_line_extra_ids.product_id', readonly=False, default=lambda self: self.env.context.get('active_id', None))
     #otro = fields.Integer(compute="_buscar")
-    #product_rel = fields.Many2one(
-    #'product.product',
-    #'Product',
-    #required=True,
-    #domain="[('company_id', 'in', (company_id, False)), ('type', '!=', 'service')]")
+    product_rel = fields.Many2one(
+    'product.product',
+    'Product',
+    required=True,
+    domain="[('company_id', 'in', (company_id, False)), ('type', '!=', 'service')]")
 
-    #@api.depends('compo_rel')
-    #def _buscar(self):
-    #    for p in self:
-    #        self.otro = self.compo_rel.search([('product_extra_id', '!=', False)])
+   
     

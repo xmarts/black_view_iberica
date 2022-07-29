@@ -40,20 +40,20 @@
       </field>
     </record>
 
-    <!--record id="inherit_view_id_inherit_module_name" model="ir.ui.view">
+    <record id="inherit_view_id_inherit_module_name" model="ir.ui.view">
       <field name="name">model.name.view.form.inherit</field>
       <field name="model">mrp_workorder.additional.product</field>
       <field name="inherit_id" ref="mrp_workorder.view_mrp_workorder_additional_product_wizard"/>
       <field name="arch" type="xml">
         <field name="product_id" position="replace">
-          <field name="otro" />
-          <field name="test_type" />
-          <field name="workorder_id" readonly="0"/>
-          <field name="test_type_id" />
-          <field name="product_rel"/>
+          <field name="compo_rel" invisible="1"/>
+          <field name="test_type" invisible="1"/>
+          <field name="workorder_id" invisible="1"/>
+          <field name="test_type_id" invisible="1"/>
+          <field name="product_rel" context="{'default_product_id': compo_rel, 'default_company_id': company_id, 'active_mo_id': test_type == 'register_consumed_materials'}" domain="[('id', '=', compo_rel), '|', ('company_id', '=', False), ('company_id', '=', company_id)]"/>
         </field>
       </field>
-    </record-->
+    </record>
 
    
   </data>
