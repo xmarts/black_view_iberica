@@ -46,7 +46,7 @@ class MrpWorkorderAdditionalProduct(models.TransientModel):
 
     test_type = fields.Char(related='test_type_id.technical_name')
     test_type_id = fields.Many2one('quality.point.test_type', 'Test Type', related='workorder_id.test_type_id')
-    compo_rel = fields.One2many(related='workorder_id.production_id.bom_id.mrp_bom_line_extra_ids.product_id', readonly=False, default=lambda self: self.env.context.get('active_id', None))
+    compo_rel = fields.Many2one(related='workorder_id.production_id.bom_id.mrp_bom_line_extra_ids.product_id', readonly=False, default=lambda self: self.env.context.get('active_id', None))
     #otro = fields.Integer(compute="_buscar")
     product_rel = fields.Many2one(
     'product.product',
