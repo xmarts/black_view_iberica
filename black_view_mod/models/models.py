@@ -22,6 +22,16 @@ class MrpProductionWorkcenterLine(models.Model):
                         wo.component_remaining_qty = 2
                         if wo.component_remaining_qty==2:
                             wo._next(continue_production=True)
+                            #anadir condicion para llevarlo a 0#
+    
+    @api.onchange('package_id')
+    def _update_component_quantity_lot_pa(self):
+        for r in self:
+            if r.package_id:
+                if r.qty_done==-1:
+                    r.qty_done = 0
+                    if r.qty_done==0:
+                        r.component_remaining_qty = 0
 
 class MrpBom(models.Model):
     _inherit = "mrp.bom"
