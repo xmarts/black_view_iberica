@@ -16,11 +16,12 @@ class MrpProductionWorkcenterLine(models.Model):
         self.ensure_one()
         for wo in self:
             if wo.lot_id:
-                if wo.component_remaining_qty == 0 and  wo.qty_done==0:
-                    wo.component_remaining_qty = 1
+                if wo.qty_done==0:
                     wo.qty_done = 1
-                if wo.component_remaining_qty==1:
-                    wo._next(continue_production=True)
+                    if wo.qty_done==1:
+                        wo.component_remaining_qty = 1
+                        if wo.component_remaining_qty==1:
+                            wo._next(continue_production=True)
 
 class MrpBom(models.Model):
     _inherit = "mrp.bom"
