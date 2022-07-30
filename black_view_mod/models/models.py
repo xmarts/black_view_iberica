@@ -16,6 +16,7 @@ class MrpProductionWorkcenterLine(models.Model):
         self.ensure_one()
         for wo in self:
             if wo.lot_id:
+                wo.qty_done = wo.move_line_ids.qty_done
                 if wo.qty_done <= 0.0000:
                     wo.qty_done = 1
                     if wo.qty_done==1:
@@ -28,7 +29,7 @@ class MrpProductionWorkcenterLine(models.Model):
     def _update_component_quantity_lot_pa(self):
         for r in self:
             if r.package_id:
-                if r.qty_done==-1:
+                if r.qty_done <= -1:
                     r.qty_done = 0
                     if r.qty_done==0:
                         r.component_remaining_qty = 0
