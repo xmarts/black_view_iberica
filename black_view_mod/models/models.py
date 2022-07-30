@@ -16,7 +16,7 @@ class MrpProductionWorkcenterLine(models.Model):
         self.ensure_one()
         for wo in self:
             if wo.lot_id:
-                if wo.qty_done==0:
+                if wo.qty_done==0.0000:
                     wo.qty_done = 1
                     if wo.qty_done==1:
                         wo.component_remaining_qty = 2
