@@ -17,6 +17,7 @@ class MrpProductionWorkcenterLine(models.Model):
         for wo in self:
             if wo.lot_id:
                 wo.qty_done = wo.move_line_ids.qty_done
+                wo.component_remaining_qty = wo.move_line_ids.qty_done
                 if wo.qty_done <= 0.0000:
                     wo.qty_done = 1
                     if wo.qty_done==1:
