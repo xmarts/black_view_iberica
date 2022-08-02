@@ -19,7 +19,7 @@ class MrpProductionWorkcenterLine(models.Model):
                 wo.qty_done = wo.move_id.quantity_done
                 #wo.component_remaining_qty = wo.move_id.quantity_done
                 wo.qty_done = wo.component_remaining_qty
-                if wo.qty_done <= 0.0000:
+                if wo.qty_done == 0.0000:
                     wo.qty_done = 1
                     if wo.qty_done==1:
                         wo.component_remaining_qty = 2
