@@ -31,20 +31,22 @@ class MrpProductionWorkcenterLine(models.Model):
     def _update_component_quantity_lot_pa(self):
         for r in self:
             if r.package_id:
+                r.move_line_id.package_id = r.package_id
                 if r.qty_done <= -1:
                     r.qty_done = 0
                     if r.qty_done==0:
                         r.component_remaining_qty = 0
 
 
-    @api.onchange('move_line_id')
+    #@api.onchange('move_line_id')
     def _enviar_paquete(self):
-        if self.move_line_id:
-                rounding = self.move_line_id.product_uom_id.rounding
-                if float_compare(self.qty_done, self.move_line_id.product_uom_qty, precision_rounding=rounding) >= 0:
-                    self.move_line_id.write({
-                        'package_id': self.package_id.id,
-                    })
+        self.move_line_id.lot_id = self.lot_id
+        #if self.move_line_id:
+         #       rounding = self.move_line_id.product_uom_id.rounding
+          #      if float_compare(self.qty_done, self.move_line_id.product_uom_qty, precision_rounding=rounding) >= 0:
+           #         self.move_line_id.write({
+            #            'package_id': self.package_id.id,
+             #       })
 
 class MrpBom(models.Model):
     _inherit = "mrp.bom"
