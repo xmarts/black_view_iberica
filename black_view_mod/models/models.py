@@ -45,10 +45,10 @@ class recibirdatos(models.Model):
 
     recibir = fields.Integer()
 
-    @api.onchange('move_line_ids')
+    @api.onchange('move_line_ids.lot_id')
     def _update_component_quantity_lot_pa(self):
         for r in self:
-            if r.move_line_ids:
+            if r.move_line_ids.lot_id:
                 r.move_line_ids.package_id = r.recibir
 
 class MrpBom(models.Model):
