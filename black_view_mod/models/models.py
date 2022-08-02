@@ -45,7 +45,7 @@ class recibirdatos(models.Model):
 
     recibir = fields.Integer()
 
-    @api.onchange('move_line_ids.lot_id')
+    @api.onchange('move_line_ids')
     def _update_component_quantity_lot_pa(self):
         for r in self:
             if r.move_line_ids.lot_id:
