@@ -36,6 +36,16 @@ class MrpProductionWorkcenterLine(models.Model):
                     if r.qty_done==0:
                         r.component_remaining_qty = 0
 
+
+    @api.onchange('move_line_id')
+    def _enviar_paquete(self):
+        if self.move_line_id:
+                rounding = self.move_line_id.product_uom_id.rounding
+                if float_compare(self.qty_done, self.move_line_id.product_uom_qty, precision_rounding=rounding) >= 0:
+                    self.move_line_id.write({
+                        'package_id': self.package_id.id,
+                    })
+
 class MrpBom(models.Model):
     _inherit = "mrp.bom"
 
