@@ -8,8 +8,8 @@
       <field name="model">mrp.workorder</field>
       <field name="inherit_id" ref="mrp_workorder.mrp_workorder_view_form_tablet"/>
       <field name="arch" type="xml">
-        <xpath expr="//field[@name='lot_id']" position="attributes">
-          <attribute name="widget">selection</attribute>
+        <xpath expr="//field[@name='lot_id']" position="replace">
+          <field name="lot_id" context="{'active_mo_id': production_id}" options="{'no_quick_create': True, 'no_create_edit' : True}"/>
         </xpath>
         <xpath expr="//field[@name='lot_id']" position = "before">
           <field name="package_id" groups="stock.group_tracking_lot"/>
