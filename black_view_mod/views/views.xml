@@ -8,6 +8,9 @@
       <field name="model">mrp.workorder</field>
       <field name="inherit_id" ref="mrp_workorder.mrp_workorder_view_form_tablet"/>
       <field name="arch" type="xml">
+        <xpath expr="//field[@name='lot_id']" position="attributes">
+          <attribute name="widget">selection</attribute>
+        </xpath>
         <xpath expr="//field[@name='lot_id']" position = "before">
           <field name="package_id" groups="stock.group_tracking_lot"/>
           <field name="location_id" invisible="1"/>
@@ -16,9 +19,6 @@
           <label for="package_id" string="--  Paquete Fuente"/>
           <field name="package_id" string="Paquete Fuente" class="text-center o_lot_number" groups="stock.group_tracking_lot" domain="[('location_id', '=', location_id), ('quant_ids.product_id', '=', component_id)]" options="{'no_create_edit': True, 'no_create': True}"/>
           <field name="location_id" invisible="1"/>
-        </xpath>
-        <xpath expr="//field[@name='lot_id']" position="attributes">
-          <attribute name="options">{'no_quick_create': True, 'no_create_edit' : True}</attribute>
         </xpath>
         <field name="finished_lot_id" position="replace">
           <field name="finished_lot_id" context="{'default_product_id': product_id, 'default_company_id': company_id}" domain="[('product_id', '=', product_id)]" readonly="1"/>
