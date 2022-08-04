@@ -130,5 +130,13 @@ class MrpWorkorderAdditionalProduct(models.TransientModel):
     required=True,
     domain="[('company_id', 'in', (company_id, False)), ('type', '!=', 'service')]")
 
+
+class StockProductionLot(models.Model):
+    _inherit = 'stock.production.lot'
+
+    active = fields.Boolean(
+        string='Activo', 
+        default=True
+    )
    
     

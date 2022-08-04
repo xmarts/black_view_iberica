@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data>
+		<record id="automation_stock_production_lot_id" model="base.automation">
+			<field name="name">Archivar LOTE</field>
+			<field name="model_id" ref="model_stock_production_lot"/>
+			<field name="state">code</field>
+			<field name="code">
+				for rec in records:
+					if rec.product_qty &gt; 0:
+						rec.write({'active':True})
+					else:
+						rec.write({'active':False})
+			</field>
+			<field name="trigger">on_create_or_write</field>
+			<field name="active" eval="True"/>
+		</record>
+	</data>
+</odoo>
