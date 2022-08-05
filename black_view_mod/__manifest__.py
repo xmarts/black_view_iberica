@@ -26,9 +26,8 @@
     'data': [
         'security/ir.model.access.csv',
         'views/views.xml',
-        'views/templates.xml',
         'wizard/view_hin.xml',
-        'data/action_automation_lot.xml',
+        #'data/action_automation_lot.xml',
 
     ],
     # only loaded in demonstration mode
