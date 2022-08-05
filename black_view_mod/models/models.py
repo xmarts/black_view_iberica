@@ -138,18 +138,16 @@ class StockProductionLot(models.Model):
         string='Activo'
     )
     reached_zero = fields.Boolean(
-        string="Llegó a cero",
-        compute = "_archivar_lotes"
+        string="Llegó a cero"
+        #compute = "_archivar_lotes"
     )
     
-    @api.model
-    def _archivar_lotes(self):
-        for rec in self:
-            if rec.product_qty <= 0:
-                rec.reached_zero = True
-                rec.active = False
-            else:
-                rec.reached_zero = False
-                rec.active = True
-   
-    
+    # @api.model
+    # def _archivar_lotes(self):
+    #     for rec in self:
+    #         if rec.product_qty <= 0:
+    #             rec.reached_zero = True
+    #             rec.active = False
+    #         else:
+    #             rec.reached_zero = False
+    #             rec.active = True
