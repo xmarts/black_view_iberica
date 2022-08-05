@@ -135,11 +135,11 @@ class StockProductionLot(models.Model):
     _inherit = 'stock.production.lot'
 
     active = fields.Boolean(
-        string='Activo', 
-        compute = "_archivar_lotes"
+        string='Activo'
     )
     reached_zero = fields.Boolean(
-        string="Llegó a cero"
+        string="Llegó a cero",
+        compute = "_archivar_lotes"
     )
     
     @api.model
