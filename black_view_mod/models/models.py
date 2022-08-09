@@ -131,23 +131,23 @@ class MrpWorkorderAdditionalProduct(models.TransientModel):
     domain="[('company_id', 'in', (company_id, False)), ('type', '!=', 'service')]")
 
 
-class StockProductionLot(models.Model):
-    _inherit = 'stock.production.lot'
+# class StockProductionLot(models.Model):
+#     _inherit = 'stock.production.lot'
 
-    active = fields.Boolean(
-        string='Activo'
-    )
-    reached_zero = fields.Boolean(
-        string="Llegó a cero",
-        compute = "_archivar_lotes"
-    )
+#     active = fields.Boolean(
+#         string='Activo'
+#     )
+#     reached_zero = fields.Boolean(
+#         string="Llegó a cero",
+#         compute = "_archivar_lotes"
+#     )
     
-    @api.model
-    def _archivar_lotes(self):
-        for rec in self:
-            if rec.product_qty <= 0:
-                rec.reached_zero = True
-                rec.active = False
-            else:
-                rec.reached_zero = False
-                rec.active = True
+#     @api.model
+#     def _archivar_lotes(self):
+#         for rec in self:
+#             if rec.product_qty <= 0:
+#                 rec.reached_zero = True
+#                 rec.active = False
+#             else:
+#                 rec.reached_zero = False
+#                 rec.active = True

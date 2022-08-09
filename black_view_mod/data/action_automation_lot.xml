@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<!-- <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
 	<data>
 		<record id="automation_stock_production_lot_id" model="base.automation">
@@ -16,4 +16,4 @@
 			<field name="active" eval="True"/>
 		</record>
 	</data>
-</odoo>
+</odoo> -->
